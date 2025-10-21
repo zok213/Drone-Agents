@@ -1,26 +1,26 @@
 import os
 import asyncio
 from dotenv import load_dotenv
-import openai
+import google.generativeai as genai
 from agent_d.drone_control_agent import DroneControlAgent
 
 # Load environment variables from .env file
 load_dotenv()
 
-# Get the OpenAI API key from environment variables
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# Get the Gemini API key from environment variables
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-if OPENAI_API_KEY is None:
-    raise ValueError("OpenAI API key not found. Please set it in the .env file.")
+if GEMINI_API_KEY is None:
+    raise ValueError("Gemini API key not found. Please set it in the .env file.")
 
-# Set the OpenAI API key
-openai.api_key = OPENAI_API_KEY
+# Configure Gemini
+genai.configure(api_key=GEMINI_API_KEY)
 
 def main():
     # Initialize the DroneControlAgent
-    agent = DroneControlAgent(config_list=[], user_proxy_agent= None)
+    agent = DroneControlAgent()
     
-    # Run the agent (assuming run is an asyncio coroutine)
+    # Run the conversation
     asyncio.run(agent.run_conversation())
 
 if __name__ == "__main__":
