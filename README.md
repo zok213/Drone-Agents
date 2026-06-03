@@ -24,19 +24,19 @@ The system utilizes a dual-agent paradigm to ensure strict safety and operationa
 title: DroneAgent Translation & Execution Pipeline
 ---
 flowchart TD;
-    User([User Natural Language Query]) --> TextProcessing[NLP / Speech-to-Text Interface];
-    TextProcessing --> PlannerLLM[AutoGen Planner Agent];
+    User(["User Natural Language Query"]) --> TextProcessing["NLP / Speech-to-Text Interface"];
+    TextProcessing --> PlannerLLM["AutoGen Planner Agent"];
     
     subgraph Agent Interaction Loop
-        PlannerLLM <-->|Formulates Plan & Code| Executor[AutoGen Executor Agent];
-        Executor <-->|Telemetry & State Feedback| PlannerLLM;
+        PlannerLLM <-->|"Formulates Plan & Code"| Executor["AutoGen Executor Agent"];
+        Executor <-->|"Telemetry & State Feedback"| PlannerLLM;
     end
     
-    Executor --> MavSDK[MavSDK Python API];
+    Executor --> MavSDK["MavSDK Python API"];
     
     subgraph Simulation & Hardware Execution
-        MavSDK --> SITL[Gazebo SITL (PX4)];
-        MavSDK --> Hardware[HolyBro x500 Drone Framework];
+        MavSDK --> SITL["Gazebo SITL (PX4)"];
+        MavSDK --> Hardware["HolyBro x500 Drone Framework"];
     end
 ```
 
