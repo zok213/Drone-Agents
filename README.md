@@ -124,5 +124,4 @@ If you utilize this embodied agent framework in your research, please cite:
 
 ### Technical Support & Contact
 - **GitHub**: [zok213](https://github.com/zok213)
-- **Academic Support**: FPT University, Da Nang, Vietnam
 - **License**: MIT License
